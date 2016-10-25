@@ -18,7 +18,8 @@ defmodule PubsubSpike.Mixfile do
   defp deps do
     [
       {:gproc, "~> 0.6.0"},
-      {:phoenix_pubsub, "~> 0.1"}
+      {:phoenix_pubsub, "~> 0.1"},
+      {:credo, ">= 0.0.0"},
     ]
   end
 end
