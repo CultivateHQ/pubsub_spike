@@ -1,0 +1,2 @@
+%{"gproc": {:hex, :gproc, "0.6.1", "4579663e5677970758a05d8f65d13c3e9814ec707ad51d8dcef7294eda1a730c", [:rebar3], []},
+  "phoenix_pubsub": {:hex, :phoenix_pubsub, "0.1.0", "7accda8fda41492b810ecde4040ea359e7e902e5faf54057ea3cdf3584ba7935", [:mix], []}}
