@@ -20,6 +20,7 @@ defmodule PubsubSpike.Mixfile do
       {:gproc, "~> 0.6.0"},
       {:phoenix_pubsub, "~> 0.1"},
       {:credo, ">= 0.0.0"},
+      {:registry, github: "elixir-lang/registry"},
     ]
   end
 end
