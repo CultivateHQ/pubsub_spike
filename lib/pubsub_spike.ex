@@ -7,7 +7,8 @@ defmodule PubsubSpike do
     import Supervisor.Spec, warn: false
 
     children = [
-      supervisor(Phoenix.PubSub.PG2, [:pubsub_spike, []])
+      supervisor(Phoenix.PubSub.PG2, [:pubsub_spike, []]),
+      worker(PubsubSpike.PhoenixPubsub, ["topic:phoenix_pubsub", [name: :phoenix_pubsub]]),
     ]
 
     opts = [strategy: :one_for_one, name: PubsubSpike.Supervisor]
