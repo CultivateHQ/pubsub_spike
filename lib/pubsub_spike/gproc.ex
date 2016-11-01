@@ -7,10 +7,9 @@ defmodule PubsubSpike.Gproc do
   http://bbhoss.io/easy-pub-sub-event-dispatch-with-gproc-and-elixir/
   """
 
-  @gproc_names [:mavis, :sue]
 
-  def start_link do
-    GenServer.start_link(__MODULE__, {})
+  def start_link(topic, otp_opts \\ []) do
+    GenServer.start_link(__MODULE__, topic, otp_opts)
   end
 
   def broadcast_event1(destination, msg) do
@@ -21,11 +20,8 @@ defmodule PubsubSpike.Gproc do
     GenServer.call(pid, :messages_received)
   end
 
-  def init(_) do
-    @gproc_names
-    |> Enum.each(fn name ->
-      :gproc.reg({:p, :l, name})
-    end)
+  def init(topic) do
+    :gproc.reg({:p, :l, topic})
     {:ok, []}
   end
 

@@ -1,4 +1,4 @@
-%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [:mix], []},
-  "credo": {:hex, :credo, "0.4.13", "0e9d0479c7e0591e36b093bf17fbdde012e2a69b5571e2df8d0b75b4fc8adc74", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
-  "gproc": {:hex, :gproc, "0.6.1", "4579663e5677970758a05d8f65d13c3e9814ec707ad51d8dcef7294eda1a730c", [:rebar3], []},
-  "phoenix_pubsub": {:hex, :phoenix_pubsub, "0.1.0", "7accda8fda41492b810ecde4040ea359e7e902e5faf54057ea3cdf3584ba7935", [:mix], []}}
+%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [], []},
+  "credo": {:hex, :credo, "0.5.1", "2395862b94628cadf0f5c68975c1440393f425b955f1e70ce1aea267e00187a1", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
+  "gproc": {:hex, :gproc, "0.6.1", "4579663e5677970758a05d8f65d13c3e9814ec707ad51d8dcef7294eda1a730c", [], []},
+  "phoenix_pubsub": {:hex, :phoenix_pubsub, "0.1.0", "7accda8fda41492b810ecde4040ea359e7e902e5faf54057ea3cdf3584ba7935", [], []}}

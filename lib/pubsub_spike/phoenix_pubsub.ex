@@ -7,10 +7,9 @@ defmodule PubsubSpike.PhoenixPubsub do
   Illustrates subscribing to a topic using `Phoenix.PubSub`
   """
 
-  @topics ["topic:mavis", "topic:sue"]
 
-  def start_link do
-    GenServer.start_link(__MODULE__, {})
+  def start_link(topic, otp_opts \\ []) do
+    GenServer.start_link(__MODULE__, topic, otp_opts)
   end
 
   def broadcast(topic, message) do
@@ -21,8 +20,8 @@ defmodule PubsubSpike.PhoenixPubsub do
     GenServer.call(pid, :messages_received)
   end
 
-  def init(_) do
-    for topic <- @topics, do: PubSub.subscribe(:pubsub_spike, topic)
+  def init(topic) do
+    PubSub.subscribe(:pubsub_spike, topic)
     {:ok, []}
   end
 
