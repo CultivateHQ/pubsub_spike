@@ -6,10 +6,10 @@ defmodule PubsubSpike.ElixirRegistryTest do
   test "broadcast messages" do
     {:ok, pid1} = ElixirRegistry.start_link("miranda")
     {:ok, pid2} = ElixirRegistry.start_link("miranda")
-    {:ok, pid3} = ElixirRegistry.start_link("ariel")
+    {:ok, pid3} = ElixirRegistry.start_link(:ariel)
 
     ElixirRegistry.broadcast("miranda", "Hello Miranda!")
-    ElixirRegistry.broadcast("ariel", "Hello Ariel!")
+    ElixirRegistry.broadcast(:ariel, "Hello Ariel!")
 
     assert ElixirRegistry.messages_received(pid1) == ["Hello Miranda!"]
     assert ElixirRegistry.messages_received(pid2) == ["Hello Miranda!"]

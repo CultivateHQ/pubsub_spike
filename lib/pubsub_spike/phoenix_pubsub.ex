@@ -7,8 +7,10 @@ defmodule PubsubSpike.PhoenixPubsub do
   Illustrates subscribing to a topic using `Phoenix.PubSub`
   """
 
-
-  def start_link(topic, otp_opts \\ []) do
+  @doc """
+  Only supports binary topics, as PhoenixPubsub only supports binary keys in registration.
+  """
+  def start_link(topic, otp_opts \\ []) when is_binary(topic) do
     GenServer.start_link(__MODULE__, topic, otp_opts)
   end
 
@@ -29,7 +31,7 @@ defmodule PubsubSpike.PhoenixPubsub do
     {:reply, Enum.reverse(messages_received), messages_received}
   end
 
-  def handle_info({:pubsub_spike, _, _} = msg, messages_received) do
+  def handle_info({:pubsub_spike, _topic, msg}, messages_received) do
     {:noreply, [msg | messages_received]}
   end
 end

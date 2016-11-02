@@ -1,6 +1,10 @@
 defmodule PubsubSpike.ElixirRegistry do
   use GenServer
 
+  @moduledoc """
+  Using the new experimental Elixir Process Registry for local event dispatching.
+  """
+
   def start_link(topic, otp_opts \\ []) do
     GenServer.start_link(__MODULE__, topic, otp_opts)
   end

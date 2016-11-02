@@ -12,8 +12,8 @@ defmodule PubsubSpike.Gproc do
     GenServer.start_link(__MODULE__, topic, otp_opts)
   end
 
-  def broadcast_event1(destination, msg) do
-    GenServer.cast({:via, :gproc, {:p, :l, destination}}, {:event1, destination, msg})
+  def broadcast(topic, message) do
+    GenServer.cast({:via, :gproc, gproc_key(topic)}, {:broadcast, message})
   end
 
   def messages_received(pid) do
@@ -21,15 +21,20 @@ defmodule PubsubSpike.Gproc do
   end
 
   def init(topic) do
-    :gproc.reg({:p, :l, topic})
+    :gproc.reg(gproc_key(topic))
     {:ok, []}
   end
 
-  def handle_cast(event, messages_received) do
-    {:noreply, [event | messages_received]}
+  def handle_cast({:broadcast, message}, messages_received) do
+    {:noreply, [message | messages_received]}
   end
 
   def handle_call(:messages_received, _from, messages_received) do
     {:reply, Enum.reverse(messages_received), messages_received}
+  end
+
+
+  defp gproc_key(topic) do
+    {:p, :l, topic}
   end
 end
