@@ -1,6 +1,5 @@
 defmodule PubsubSpike.Gproc do
   use GenServer
-  require Logger
 
   @moduledoc """
   GenServer that registers itself twice with :gproc, to receive messages. Based on an original post by Preston Marshall,
@@ -8,14 +7,24 @@ defmodule PubsubSpike.Gproc do
   """
 
 
+  @doc """
+  Create a GenServer that subscribes to messages on the particular topic. The topic can
+  be pretty much any type of thing, binary, atom, tuple, etc...
+  """
   def start_link(topic, otp_opts \\ []) do
     GenServer.start_link(__MODULE__, topic, otp_opts)
   end
 
+  @doc """
+  Broadcast a message to a particular topic.
+  """
   def broadcast(topic, message) do
     GenServer.cast({:via, :gproc, gproc_key(topic)}, {:broadcast, message})
   end
 
+  @doc """
+  Lists, in order, all the messages received.
+  """
   def messages_received(pid) do
     GenServer.call(pid, :messages_received)
   end
@@ -32,7 +41,6 @@ defmodule PubsubSpike.Gproc do
   def handle_call(:messages_received, _from, messages_received) do
     {:reply, Enum.reverse(messages_received), messages_received}
   end
-
 
   defp gproc_key(topic) do
     {:p, :l, topic}
