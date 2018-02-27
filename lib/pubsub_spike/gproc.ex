@@ -6,7 +6,6 @@ defmodule PubsubSpike.Gproc do
   http://bbhoss.io/easy-pub-sub-event-dispatch-with-gproc-and-elixir/
   """
 
-
   @doc """
   Create a GenServer that subscribes to messages on the particular topic. The topic can
   be pretty much any type of thing, binary, atom, tuple, etc...

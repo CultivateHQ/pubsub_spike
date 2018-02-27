@@ -4,7 +4,8 @@ Investigating various ways of publishing and subscribing to events:
 
 * Using [gproc](https://github.com/uwiger/gproc)
 * Using [phoenix_pubsub](https://github.com/phoenixframework/phoenix_pubsub)
-* Using Elixir 1.4's upcoming [Process registry](https://github.com/elixir-lang/registry)
+* ~Using Elixir 1.4's upcoming [Process registry](https://github.com/elixir-lang/registry)~
+* Using Elixir's built-in [Process registry](https://hexdocs.pm/elixir/Registry.html)
 
 
 Each version is implemented in its own module, under [lib/pubsub_spike](lib/pubsub_spike). The particular flavour may be deduced from the file/module name. There is a corresponding test in [test/pubusb_spike](test/pubsub_spike).
@@ -13,7 +14,7 @@ Each module is a GenServer implementation, and contains the following methods:
 
 `start_link(topic)` - start GenServer that will listen to a particular "topic". Returns `{:ok, pid}`.
 
-`broadcast(topic, message)` - broadcasts message to all in the topic. 
+`broadcast(topic, message)` - broadcasts message to all in the topic.
 
 `messages_received(pid)` - returns all messages received by the listening GenServer.
 
@@ -46,7 +47,3 @@ PubsubSpike.PhoenixPubsub.messages_received(:phoenix_pubsub) # -> ["Hello distri
 ```
 
 \o/
-
-
-
-

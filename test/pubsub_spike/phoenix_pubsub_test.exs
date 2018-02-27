@@ -6,7 +6,8 @@ defmodule PubsubSpike.PhoenixPubsubTest do
   test "broadcast messages" do
     {:ok, pid1} = PhoenixPubsub.start_link("mavis")
     {:ok, pid2} = PhoenixPubsub.start_link("mavis")
-    {:ok, pid3} = PhoenixPubsub.start_link("sue") #registering with atoms not supported by Registry
+    # registering with atoms not supported by Registry
+    {:ok, pid3} = PhoenixPubsub.start_link("sue")
 
     PhoenixPubsub.broadcast("mavis", "Hi Mavis!")
     PhoenixPubsub.broadcast("sue", "Hi Sue!")

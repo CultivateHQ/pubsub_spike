@@ -15,5 +15,4 @@ defmodule PubsubSpike.ElixirRegistryTest do
     assert ElixirRegistry.messages_received(pid2) == ["Hello Miranda!"]
     assert ElixirRegistry.messages_received(pid3) == ["Hello Ariel!"]
   end
-
 end

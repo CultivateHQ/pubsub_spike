@@ -8,8 +8,8 @@ defmodule PubsubSpike do
 
     children = [
       supervisor(Phoenix.PubSub.PG2, [:pubsub_spike, []]),
-      supervisor(Registry, [:duplicate,  :pubsub_elixir_registry]),
-      worker(PubsubSpike.PhoenixPubsub, ["topic:phoenix_pubsub", [name: :phoenix_pubsub]]),
+      supervisor(Registry, [:duplicate, :pubsub_elixir_registry]),
+      worker(PubsubSpike.PhoenixPubsub, ["topic:phoenix_pubsub", [name: :phoenix_pubsub]])
     ]
 
     opts = [strategy: :one_for_one, name: PubsubSpike.Supervisor]

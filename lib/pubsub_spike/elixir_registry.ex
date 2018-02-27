@@ -28,7 +28,6 @@ defmodule PubsubSpike.ElixirRegistry do
     GenServer.call(pid, :messages_received)
   end
 
-
   def init(topic) do
     Registry.register(:pubsub_elixir_registry, topic, [])
     {:ok, []}
